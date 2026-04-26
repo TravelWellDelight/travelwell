@@ -1,0 +1,147 @@
+import { Package } from "@/types/package";
+
+export const packages: Package[] = [
+  {
+    id: "pkg-001",
+    slug: "kerala-backwaters-honeymoon",
+    title: "Kerala Backwaters",
+    tagline: "Float through paradise on a private houseboat",
+    destination: "Kerala",
+    region: "South India",
+    category: ["honeymoon", "nature", "slow-travel"],
+    duration: { nights: 5, days: 6 },
+    groupSize: { min: 2, max: 6 },
+    price: { perPerson: 28500, originalPrice: 34000, currency: "INR" },
+    images: {
+      hero: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1600&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1593693411515-c20261bcad6e?w=800&q=80",
+        "https://images.unsplash.com/photo-1547922657-b340a1b0e46a?w=800&q=80",
+      ],
+    },
+    inclusions: [
+      "2 nights luxury houseboat stay",
+      "Alappuzha to Kollam backwater cruise",
+      "Daily breakfast + dinner on houseboat",
+      "Kathakali performance evening",
+      "Airport transfers (Kochi)",
+      "All taxes & service charges",
+    ],
+    exclusions: [
+      "Airfare",
+      "Personal expenses",
+      "Camera charges at monuments",
+    ],
+    itinerary: [
+      { day: 1, title: "Arrival in Kochi", description: "Arrive at Cochin International Airport. Transfer to hotel. Evening Fort Kochi heritage walk.", highlights: ["Fort Kochi Chinese fishing nets", "St. Francis Church"] },
+      { day: 2, title: "Munnar Hill Station", description: "Drive to Munnar (3.5 hrs). Tea plantation tour. Sunset at Top Station.", highlights: ["Eravikulam National Park", "Tea museum"] },
+      { day: 3, title: "Munnar to Alleppey", description: "Scenic drive through misty hills to the backwaters. Board your private houseboat.", highlights: ["Houseboat check-in", "Sunset on the lagoon"] },
+      { day: 4, title: "Backwaters Cruise", description: "Full day cruising the tranquil canals of Alappuzha. Fresh Kerala meals on board.", highlights: ["Village life views", "Traditional Kerala breakfast"] },
+      { day: 5, title: "Kovalam Beach", description: "Drive to Kovalam. Afternoon at leisure on the beach.", highlights: ["Lighthouse Beach", "Seafood dinner"] },
+      { day: 6, title: "Departure", description: "Transfer to Trivandrum airport. Farewell.", highlights: [] },
+    ],
+    highlights: ["Private houseboat for 2 nights", "5 distinct Kerala ecosystems", "Authentic Kerala cuisine throughout", "No tourist crowds — curated route"],
+    availability: "available",
+    rating: 4.9,
+    reviewCount: 48,
+    featured: true,
+    createdAt: "2024-01-01T00:00:00Z",
+  },
+  {
+    id: "pkg-002",
+    slug: "rajasthan-royal-circuit",
+    title: "Rajasthan Royal Circuit",
+    tagline: "From golden deserts to pink city palaces",
+    destination: "Rajasthan",
+    region: "North India",
+    category: ["culture", "heritage", "family"],
+    duration: { nights: 7, days: 8 },
+    groupSize: { min: 2, max: 12 },
+    price: { perPerson: 42000, originalPrice: 52000, currency: "INR" },
+    images: {
+      hero: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=1600&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80",
+        "https://images.unsplash.com/photo-1580977276076-ae4b8c219b8e?w=800&q=80",
+      ],
+    },
+    inclusions: [
+      "7 nights heritage hotel stays",
+      "Jaipur → Jodhpur → Jaisalmer → Udaipur circuit",
+      "Daily breakfast at hotels",
+      "Desert camel safari (2 hrs)",
+      "Vintage jeep tour of Old City Jodhpur",
+      "Sunset boat ride on Lake Pichola",
+      "All transfers by private A/C vehicle",
+    ],
+    exclusions: ["Airfare", "Entrance fees to monuments", "Lunch & dinner", "Personal expenses"],
+    itinerary: [
+      { day: 1, title: "Arrive Jaipur — The Pink City", description: "Check into a heritage haveli. Evening Amer Fort light show.", highlights: ["City Palace", "Jantar Mantar"] },
+      { day: 2, title: "Jaipur Full Day", description: "Hawa Mahal, Albert Hall Museum, Johari Bazaar gem market.", highlights: ["Block printing workshop", "Rajasthani thali dinner"] },
+      { day: 3, title: "Jodhpur — The Blue City", description: "Drive 5 hrs. Mehrangarh Fort exploration.", highlights: ["Mehrangarh ramparts", "Old city rooftop views"] },
+      { day: 4, title: "Jaisalmer — The Golden City", description: "Drive to the desert. Check into a sandstone haveli.", highlights: ["Sam Sand Dunes sunset", "Camel safari"] },
+      { day: 5, title: "Jaisalmer Fort & Desert Camp", description: "Morning fort walk. Afternoon desert camp experience.", highlights: ["Patwon ki Haveli", "Folk music under stars"] },
+      { day: 6, title: "Udaipur — City of Lakes", description: "Fly or drive to Udaipur. Evening boat ride.", highlights: ["Lake Pichola", "Jagdish Temple"] },
+      { day: 7, title: "Udaipur Leisure", description: "Art gallery, Sajjangarh Palace, local market.", highlights: ["Miniature painting class", "Rooftop dinner"] },
+      { day: 8, title: "Departure", description: "Transfer to Udaipur Airport.", highlights: [] },
+    ],
+    highlights: ["4 Rajasthan cities in one curated circuit", "All heritage hotel stays", "Desert camel safari included", "Private vehicle — no shared coaches"],
+    availability: "limited",
+    rating: 4.8,
+    reviewCount: 34,
+    featured: true,
+    createdAt: "2024-01-05T00:00:00Z",
+  },
+  {
+    id: "pkg-003",
+    slug: "bali-adventure-explorer",
+    title: "Bali Adventure Explorer",
+    tagline: "Sacred temples, volcano treks, and rice terrace sunrises",
+    destination: "Bali",
+    region: "Southeast Asia",
+    category: ["adventure", "international", "nature"],
+    duration: { nights: 6, days: 7 },
+    groupSize: { min: 2, max: 8 },
+    price: { perPerson: 55000, originalPrice: 68000, currency: "INR" },
+    images: {
+      hero: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1600&q=80",
+      gallery: [
+        "https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=800&q=80",
+        "https://images.unsplash.com/photo-1539367628448-4bc5c9d171c8?w=800&q=80",
+      ],
+    },
+    inclusions: [
+      "6 nights boutique villa stay (private pool)",
+      "Mount Batur sunrise trek with guide",
+      "Tegallalang Rice Terrace tour",
+      "Uluwatu temple sunset + Kecak fire dance",
+      "White-water rafting (Ayung River)",
+      "Daily breakfast",
+      "Airport transfers",
+    ],
+    exclusions: ["International flights", "Visa on arrival (₹1,200 approx)", "Meals except breakfast", "Personal expenses"],
+    itinerary: [
+      { day: 1, title: "Arrive Denpasar", description: "Transfer to Ubud villa. Evening Ubud Palace dance performance.", highlights: ["Ubud Art Market", "Temple ceremony if active"] },
+      { day: 2, title: "Mount Batur Trek", description: "2am wake. Summit by sunrise. Descend for breakfast.", highlights: ["Active volcano crater views", "Coffee plantation stop"] },
+      { day: 3, title: "Ubud Cultural Day", description: "Tegallalang rice terraces, Sacred Monkey Forest, batik workshop.", highlights: ["Tirta Empul holy spring", "Traditional Balinese lunch"] },
+      { day: 4, title: "Ayung River Rafting", description: "White-water rafting through jungle gorge. Afternoon at leisure.", highlights: ["14km rafting route", "Waterfall stops"] },
+      { day: 5, title: "Seminyak Beach Day", description: "Drive to Seminyak. Beach clubs, shopping, sunset cocktails.", highlights: ["Potato Head Beach Club", "Ku De Ta sunset"] },
+      { day: 6, title: "Uluwatu Cliffs", description: "Morning snorkelling at Nusa Dua. Evening Uluwatu temple.", highlights: ["Kecak fire dance", "Cliff-top temple views"] },
+      { day: 7, title: "Departure", description: "Transfer to Ngurah Rai International Airport.", highlights: [] },
+    ],
+    highlights: ["Private pool villa for all nights", "Volcano trek at sunrise", "Rafting through jungle gorge", "Zero tourist-trap itinerary"],
+    availability: "available",
+    rating: 4.9,
+    reviewCount: 27,
+    featured: true,
+    createdAt: "2024-01-10T00:00:00Z",
+  },
+];
+
+export function getPackageBySlug(slug: string): Package | undefined {
+  return packages.find((p) => p.slug === slug);
+}
+
+export function getFeaturedPackages(): Package[] {
+  return packages.filter((p) => p.featured);
+}
