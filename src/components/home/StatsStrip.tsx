@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from "react";
 
 const STATS = [
   {
-    end: 4200,
+    end: 150,
     label: "Travellers",
     format: (n: number) => n.toLocaleString("en-IN") + "+",
   },
