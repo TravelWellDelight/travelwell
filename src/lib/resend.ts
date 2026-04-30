@@ -110,7 +110,7 @@ export async function sendEnquiryNotification(data: {
   await resend.emails.send({
     from: FROM,
     to: [TEAM_TO],
-    replyTo: email,
+    reply_to: email,
     subject,
     html: `
       <!DOCTYPE html>
@@ -178,6 +178,47 @@ export async function sendEnquiryNotification(data: {
         </table>
       </body>
       </html>
+    `,
+  });
+}
+
+// ── 3. Booking confirmation email to user ──
+export async function sendBookingConfirmation(data: {
+  toEmail: string;
+  toName: string;
+  packageTitle: string;
+  travelDates?: { start?: string; end?: string };
+  amount: number;
+  bookingId: string;
+}) {
+  const resend = getResend();
+  const { toEmail, toName, packageTitle, travelDates, amount, bookingId } =
+    data;
+
+  await resend.emails.send({
+    from: FROM,
+    to: [toEmail],
+    subject: `Booking Confirmed — ${packageTitle} | TravelWell Delight`,
+    html: `
+      <div style="font-family:sans-serif;max-width:520px;margin:0 auto;padding:32px;background:#0f0f0f;color:#f0ece0;border-radius:8px;">
+        <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#d4af6e;margin:0 0 8px;">TravelWell Delight</p>
+        <h2 style="font-size:22px;font-weight:700;color:#fff;margin:0 0 16px;">
+          Your booking is confirmed, ${toName.split(" ")[0]}!
+        </h2>
+        <p style="font-size:14px;color:#aaa;line-height:1.7;margin:0 0 20px;">
+          Thank you for booking with TravelWell Delight. Here are your booking details:
+        </p>
+        <div style="background:#161616;padding:16px;border-left:3px solid #d4af6e;margin-bottom:20px;">
+          <p style="margin:0 0 8px;font-size:13px;color:#f0ece0;"><strong>Package:</strong> ${packageTitle}</p>
+          ${travelDates?.start ? `<p style="margin:0 0 8px;font-size:13px;color:#f0ece0;"><strong>Travel dates:</strong> ${travelDates.start}${travelDates.end ? ` – ${travelDates.end}` : ""}</p>` : ""}
+          <p style="margin:0 0 8px;font-size:13px;color:#f0ece0;"><strong>Amount paid:</strong> ₹${amount.toLocaleString("en-IN")}</p>
+          <p style="margin:0;font-size:11px;color:#666;"><strong>Booking ID:</strong> ${bookingId}</p>
+        </div>
+        <p style="font-size:13px;color:#aaa;line-height:1.7;margin:0 0 20px;">
+          Our team will reach out within 2 hours to confirm your itinerary details.
+        </p>
+        <p style="font-size:11px;color:#333;margin-top:24px;">— Team TravelWell Delight · Life Beyond Limitations</p>
+      </div>
     `,
   });
 }

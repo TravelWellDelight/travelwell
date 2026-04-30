@@ -6,7 +6,6 @@ if (!MONGODB_URI) {
   throw new Error("MONGODB_URI is not defined in .env.local");
 }
 
-/** Cache connection across hot-reloads in development */
 let cached = (global as any).mongoose as {
   conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
@@ -22,6 +21,9 @@ export async function connectDB(): Promise<typeof mongoose> {
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI, {
       bufferCommands: false,
+      maxPoolSize: 10, // ← max 10 concurrent DB connections
+      serverSelectionTimeoutMS: 5000, // ← give up finding server after 5s
+      socketTimeoutMS: 45000, // ← close idle sockets after 45s
     });
   }
 

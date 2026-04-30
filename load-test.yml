@@ -1,0 +1,31 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 10
+      name: "Ramp up"
+    - duration: 120
+      arrivalRate: 100
+      name: "100 concurrent users"
+
+scenarios:
+  - name: "Browse packages"
+    flow:
+      - get:
+          url: "/packages"
+      - get:
+          url: "/destinations"
+      - get:
+          url: "/"
+
+  - name: "Submit enquiry"
+    flow:
+      - post:
+          url: "/api/enquiry"
+          headers:
+            Content-Type: "application/json"
+          json:
+            name: "Test User"
+            email: "test@test.com"
+            phone: "9999999999"
+            message: "Test enquiry load testing"
