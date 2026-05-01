@@ -28,3 +28,4 @@ export default function PackageDetailPage({ params }: Props) {
   if (!pkg) notFound();
   return <PackageDetailClient pkg={pkg} />;
 }
+export const revalidate = false; // fully static — never re-fetch

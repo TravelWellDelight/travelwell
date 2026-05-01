@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
         paymentStatus: "paid",
       },
       { new: true },
-    );
+    ).select("traveller packageTitle travelDates amount _id");
 
     if (!booking) {
       return NextResponse.json({ error: "Booking not found" }, { status: 404 });

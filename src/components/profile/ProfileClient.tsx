@@ -103,6 +103,8 @@ export default function ProfileClient({
   // Full profile data from API
   const [profile, setProfile] = useState<any>(null);
   const [form, setForm] = useState<any>({});
+  const [bookings, setBookings] = useState<any[]>([]);
+  const [enquiries, setEnquiries] = useState<any[]>([]);
 
   useEffect(() => {
     fetch("/api/user/profile")
@@ -110,6 +112,8 @@ export default function ProfileClient({
       .then((data) => {
         setProfile(data.user);
         setForm(data.user || {});
+        setBookings(data.bookings || []);
+        setEnquiries(data.enquiries || []);
       });
   }, []);
 
