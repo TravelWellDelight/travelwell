@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     default: "TravelWell Delight — Curated Journeys, Crafted for You",
     template: "%s | TravelWell Delight",
   },
+
   description:
     "Handcrafted travel packages to the world's most extraordinary destinations.",
   openGraph: {
@@ -19,6 +20,10 @@ export const metadata: Metadata = {
     siteName: "TravelWell Delight",
     locale: "en_IN",
     type: "website",
+  },
+  icons: {
+    icon: "icon1.png",
+    apple: "apple-icon.png",
   },
 };
 
