@@ -241,9 +241,7 @@ export default function PackageDetailClient({ pkg }: { pkg: Package }) {
         {/* Price + rating bottom right */}
         <div className="absolute bottom-[140px] right-6 md:right-14 z-20 text-right">
           <p className="text-[11px] text-white/40 mb-1">from</p>
-          <p className="font-display font-black text-white text-3xl">
-            {formatPrice(pkg.price.perPerson)}
-          </p>
+          <p className="font-display font-black text-white text-3xl"></p>
           <p className="text-[11px] text-white/40">per person</p>
           {pkg.rating && (
             <div className="flex items-center justify-end gap-1 mt-2">

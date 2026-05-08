@@ -7,7 +7,7 @@ export default function EnquiryBanner() {
   const [sent, setSent] = useState(false);
 
   return (
-    <section className="relative py-20 mt-16 overflow-hidden bg-[#f5f4f3]">
+    <section className="relative py-20 mt-4 overflow-hidden bg-[#f5f4f3]">
       {/* Background */}
       <div className="absolute inset-0">
         <img

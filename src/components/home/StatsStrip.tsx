@@ -13,7 +13,7 @@ const STATS = [
     format: (n: number) => n.toLocaleString("en-IN") + "+",
   },
   { end: 100, label: "Handcrafted", format: (n: number) => String(n) + "%" },
-  { end: 8, label: "Years of craft", format: (n: number) => String(n) },
+  { end: 15, label: "Years of craft", format: (n: number) => String(n) + "+" },
 ];
 
 function Counter({
@@ -64,7 +64,7 @@ export default function StatsStrip() {
   return (
     <section
       ref={ref}
-      className="py-14 border-y mt-16"
+      className="py-14 border-y mt-18"
       style={{ borderColor: "var(--bd)", background: "var(--bg-2)" }}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-8">

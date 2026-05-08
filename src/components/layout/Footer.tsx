@@ -14,7 +14,7 @@ const SOCIALS = [
   },
   {
     icon: Linkedin,
-    href: "https://linkedin.com/company/travelwelldelight",
+    href: "https://www.linkedin.com/company/travelwell-delight-pvt-ltd/",
     label: "LinkedIn",
   },
   { icon: Mail, href: "mailto:travelwelldelight@gmail.com", label: "Email" },
@@ -32,7 +32,7 @@ const COLUMNS = [
   {
     title: "Plan",
     links: [
-      ["Trip Planner", "/enquiry"],
+      ["Trip Planner", "/planner"],
       ["Contact", "/contact"],
       ["Blog", "/blog"],
     ],
@@ -49,7 +49,7 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#f5f4f3] border-t border-[#E8DCCB] pt-14 pb-8 px-5 md:px-10 mt-20">
+    <footer className="bg-[#f5f4f3] border-t border-[#E8DCCB] pt-14 pb-8 px-5 md:px-10 mt-0">
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
         {/* ── Brand column ── */}
         <div className="col-span-2 md:col-span-1">

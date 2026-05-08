@@ -4,19 +4,47 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import { Clock, Users, Star } from "lucide-react";
 import type { Package } from "@/types/package";
-import { formatPrice, discountPercent } from "@/lib/utils";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-const categories = ["All", "Honeymoon", "Adventure", "Culture", "Nature", "International", "Family"];
+const categories = [
+  "All",
+  "Honeymoon",
+  "Family Tours",
+  "Group Trips",
+  "Luxury Travel",
+  "Budget Travel",
+  "Weekend Getaways",
+  "Corporate Retreats",
+  "Customized Tours",
+  "Adventure Trips",
+  "Spiritual Tours",
+];
+
+const categoryToSlug: Record<string, string> = {
+  All: "All",
+  Honeymoon: "honeymoon",
+  "Family Tours": "family",
+  "Group Trips": "group-trips",
+  "Luxury Travel": "luxury",
+  "Budget Travel": "budget",
+  "Weekend Getaways": "weekend-getaways",
+  "Corporate Retreats": "corporate-retreats",
+  "Customized Tours": "customized",
+  "Adventure Trips": "adventure",
+  "Spiritual Tours": "spiritual",
+};
 
 export default function PackageGrid({ packages }: { packages: Package[] }) {
   const [active, setActive] = useState("All");
   const ref = useRef<HTMLDivElement>(null);
   const visible = useScrollReveal(ref);
 
-  const filtered = active === "All"
-    ? packages
-    : packages.filter((p) => p.category.some((c) => c.toLowerCase() === active.toLowerCase()));
+  const filtered =
+    active === "All"
+      ? packages
+      : packages.filter((p) =>
+          p.category.some((c) => c.toLowerCase() === categoryToSlug[active]),
+        );
 
   return (
     <section ref={ref} className="py-12 bg-[#0A0A0A] min-h-screen">
@@ -55,11 +83,15 @@ export default function PackageGrid({ packages }: { packages: Package[] }) {
   );
 }
 
-function GridCard({ pkg, index, visible }: { pkg: Package; index: number; visible: boolean }) {
-  const discount = pkg.price.originalPrice
-    ? discountPercent(pkg.price.originalPrice, pkg.price.perPerson)
-    : 0;
-
+function GridCard({
+  pkg,
+  index,
+  visible,
+}: {
+  pkg: Package;
+  index: number;
+  visible: boolean;
+}) {
   return (
     <Link
       href={`/packages/${pkg.slug}`}
@@ -67,7 +99,8 @@ function GridCard({ pkg, index, visible }: { pkg: Package; index: number; visibl
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(24px)",
-        transition: "opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, translate 0.3s",
+        transition:
+          "opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, translate 0.3s",
         transitionDelay: `${Math.min(index, 5) * 70}ms`,
       }}
     >
@@ -79,9 +112,9 @@ function GridCard({ pkg, index, visible }: { pkg: Package; index: number; visibl
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        {discount > 0 && (
-          <span className="absolute top-3 left-3 bg-brand-red text-white text-[9px] font-bold tracking-wider px-2 py-0.5 uppercase">
-            -{discount}%
+        {pkg.availability === "limited" && (
+          <span className="absolute top-3 right-3 bg-amber-500 text-black text-[9px] font-bold px-2 py-0.5 uppercase">
+            Limited
           </span>
         )}
         <div className="absolute bottom-3 left-3 flex gap-2">
@@ -96,26 +129,26 @@ function GridCard({ pkg, index, visible }: { pkg: Package; index: number; visibl
 
       {/* Body */}
       <div className="p-5">
-        <p className="text-[10px] tracking-[0.2em] uppercase text-brand-red mb-1">{pkg.destination}</p>
-        <h3 className="font-display font-bold text-white text-xl mb-1 leading-snug">{pkg.title}</h3>
-        <p className="text-[12px] text-white/40 mb-4 line-clamp-2">{pkg.tagline}</p>
+        <p className="text-[10px] tracking-[0.2em] uppercase text-brand-red mb-1">
+          {pkg.destination}
+        </p>
+        <h3 className="font-display font-bold text-white text-xl mb-1 leading-snug">
+          {pkg.title}
+        </h3>
+        <p className="text-[12px] text-white/40 mb-4 line-clamp-2">
+          {pkg.tagline}
+        </p>
 
         <div className="flex items-center justify-between pt-3 border-t border-white/[0.06]">
-          <div>
-            {pkg.price.originalPrice && (
-              <p className="text-[10px] text-white/25 line-through">{formatPrice(pkg.price.originalPrice)}</p>
-            )}
-            <p className="font-bold text-white">
-              {formatPrice(pkg.price.perPerson)}
-              <span className="text-[10px] font-normal text-white/30 ml-1">/ person</span>
-            </p>
-          </div>
           {pkg.rating && (
             <span className="flex items-center gap-1 text-[11px] text-white/40">
               <Star size={11} className="text-amber-400 fill-amber-400" />
               {pkg.rating}
             </span>
           )}
+          <span className="ml-auto text-[10px] font-bold tracking-[0.15em] uppercase text-brand-red group-hover:underline">
+            View Tour →
+          </span>
         </div>
       </div>
     </Link>

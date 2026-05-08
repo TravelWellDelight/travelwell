@@ -48,7 +48,10 @@ export async function POST(req: NextRequest) {
         toEmail: booking.traveller?.email || "",
         toName: booking.traveller?.firstName || "Traveller",
         packageTitle: booking.packageTitle,
-        travelDates: booking.travelDates,
+        travelDates: {
+          startDate: booking.travelDates?.start,
+          endDate: booking.travelDates?.end,
+        },
         amount: booking.amount,
         bookingId: booking._id.toString(),
       });

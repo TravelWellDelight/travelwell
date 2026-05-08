@@ -15,6 +15,7 @@ function fmt(n: number) {
 export default function FeaturedPackages({ packages }: Props) {
   const [idx, setIdx] = useState(0);
   const [hoveredImg, setHoveredImg] = useState<string | null>(null);
+  const [prevImg, setPrevImg] = useState<string | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scrollTo = (i: number) => {
@@ -28,29 +29,60 @@ export default function FeaturedPackages({ packages }: Props) {
     });
   };
 
+  const handleHover = (img: string | null) => {
+    if (img) {
+      setPrevImg(hoveredImg);
+      setHoveredImg(img);
+    } else {
+      setPrevImg(hoveredImg);
+      setHoveredImg(null);
+      setTimeout(() => setPrevImg(null), 900);
+    }
+  };
+
   return (
-    <section className="mt-16 relative overflow-hidden">
-      {/* Section background — changes to hovered card image */}
-      <div
-        className="absolute inset-0 transition-all duration-700 pointer-events-none"
-        style={{
-          backgroundImage: hoveredImg ? `url(${hoveredImg})` : "none",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: hoveredImg ? 1 : 0,
-        }}
-      />
-      {/* Warm frosted overlay on bg image */}
+    <section className="mt-18 relative overflow-hidden">
+      {/* Previous bg — fades out */}
+      {prevImg && (
+        <div
+          key={prevImg + "_prev"}
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: `url(${prevImg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0,
+            transition: "cubic-bezier(0.4,0,0.2,1)",
+          }}
+        />
+      )}
+
+      {/* Current bg — fades in */}
+      {hoveredImg && (
+        <div
+          key={hoveredImg + "_curr"}
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: `url(${hoveredImg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.45,
+            transition: "cubic-bezier(0.4,0,0.2,1)",
+          }}
+        />
+      )}
+
+      {/* Frosted overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: "rgba(253,250,246,0.87)",
+          background: "rgba(253,250,246,0.72)",
           opacity: hoveredImg ? 1 : 0,
-          transition: "opacity 0.7s ease",
+          transition: "cubic-bezier(0.4,0,0.2,1)",
         }}
       />
 
-      <div className="relative z-10 px-5 md:px-12 max-w-7xl mx-auto py-8">
+      <div className="relative z-10 px-5 md:px-12 max-w-7xl mx-auto py-8 pb-16">
         {/* Header */}
         <div className="flex items-end justify-between mb-8">
           <div>
@@ -115,7 +147,7 @@ export default function FeaturedPackages({ packages }: Props) {
               key={pkg.id}
               pkg={pkg}
               onClick={() => setIdx(i)}
-              onHover={(img) => setHoveredImg(img)}
+              onHover={handleHover}
             />
           ))}
         </div>
@@ -248,7 +280,7 @@ function PkgCard({
         </div>
 
         <div className="flex items-center justify-between">
-          <div>
+          {/* <div>
             {pkg.price.originalPrice && (
               <p
                 className="text-[10px] line-through"
@@ -266,7 +298,7 @@ function PkgCard({
                 / person
               </span>
             </p>
-          </div>
+          </div> */}
           <span
             className="text-white text-[10px] font-bold tracking-[0.15em] uppercase px-4 py-2 transition-colors"
             style={{ background: hovered ? "#A52E22" : "#C8392B" }}

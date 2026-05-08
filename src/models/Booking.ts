@@ -17,6 +17,7 @@ export interface IBooking extends Document {
     children?: number;
     specialRequests?: string;
   };
+  budget?: string;
   amount: number;
   currency: string;
   status: "pending" | "confirmed" | "cancelled";
@@ -45,6 +46,7 @@ const BookingSchema = new Schema<IBooking>(
       children: Number,
       specialRequests: String,
     },
+    budget: { type: String, default: "" },
     amount: { type: Number, required: true },
     currency: { type: String, default: "INR" },
     status: {

@@ -144,17 +144,6 @@ export default function EnquiryFormFull() {
             Watch <span className="text-white/50">{form.email}</span> and{" "}
             <span className="text-white/50">{form.phone}</span>
           </p>
-          <div className="h-px bg-white/[0.06] mb-10" />
-          <p className="text-white/30 text-xs mb-4">Need something faster?</p>
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#25D366] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-8 py-3.5 hover:bg-[#20BA58] transition-colors"
-          >
-            <MessageCircle size={14} strokeWidth={1.5} />
-            Chat on WhatsApp
-          </a>
         </div>
       </div>
     );

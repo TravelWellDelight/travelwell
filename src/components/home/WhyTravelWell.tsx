@@ -50,7 +50,7 @@ export default function WhyTravelWell() {
   return (
     <section
       ref={ref}
-      className="relative py-20 mt-16 overflow-hidden bg-[#f5f4f3]"
+      className="relative py-20 mt-4 overflow-hidden bg-[#f5f4f3]"
     >
       {/* Background Image (more visible now) */}
       <div className="absolute inset-0">
