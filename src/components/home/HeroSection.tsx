@@ -19,6 +19,21 @@ const SLIDES = [
     location: "Bali, Indonesia",
     headline: ["Sacred temples,", "Volcano treks"],
   },
+  {
+    img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80",
+    location: "Dubai, UAE",
+    headline: ["Sky-high luxury,", "Desert dreams"],
+  },
+  {
+    img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&q=80",
+    location: "Kyoto, Japan",
+    headline: ["Ancient temples,", "Cherry blossoms"],
+  },
+  {
+    img: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1920&q=80",
+    location: "Maldives",
+    headline: ["Crystal waters,", "Absolute silence"],
+  },
 ];
 
 export default function HeroSection() {
