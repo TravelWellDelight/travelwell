@@ -131,18 +131,19 @@ export default function EnquiryFormFull() {
     return (
       <div className="min-h-[60vh] flex items-center justify-center px-6 py-20">
         <div className="text-center max-w-md">
-          <div className="w-20 h-20 rounded-full border border-emerald-500/30 bg-emerald-500/5 flex items-center justify-center mx-auto mb-8">
-            <Check size={32} strokeWidth={1.5} className="text-emerald-400" />
+          <div className="w-20 h-20 rounded-full border-2 border-[#E8621A]/30 bg-[#E8621A]/5 flex items-center justify-center mx-auto mb-8">
+            <Check size={32} strokeWidth={1.5} className="text-[#E8621A]" />
           </div>
-          <h2 className="font-display text-4xl text-white mb-4">
+          <h2 className="font-display text-4xl text-[#1C0A00] mb-4">
             We've got it!
           </h2>
-          <p className="text-white/40 text-sm leading-relaxed mb-2">
+          <p className="text-[#6B5B45] text-sm leading-relaxed mb-2">
             Our travel specialist will reach out within 4 hours.
           </p>
-          <p className="text-white/25 text-sm mb-10">
-            Watch <span className="text-white/50">{form.email}</span> and{" "}
-            <span className="text-white/50">{form.phone}</span>
+          <p className="text-[#A8967E] text-sm mb-10">
+            Watch{" "}
+            <span className="text-[#6B5B45] font-medium">{form.email}</span> and{" "}
+            <span className="text-[#6B5B45] font-medium">{form.phone}</span>
           </p>
         </div>
       </div>
@@ -184,7 +185,7 @@ export default function EnquiryFormFull() {
               label="Email address"
               required
               icon={
-                <Mail size={12} strokeWidth={1.5} className="text-white/20" />
+                <Mail size={12} strokeWidth={1.5} className="text-[#A8967E]" />
               }
             >
               <input
@@ -200,7 +201,7 @@ export default function EnquiryFormFull() {
               label="Phone number"
               required
               icon={
-                <Phone size={12} strokeWidth={1.5} className="text-white/20" />
+                <Phone size={12} strokeWidth={1.5} className="text-[#A8967E]" />
               }
             >
               <input
@@ -240,7 +241,7 @@ export default function EnquiryFormFull() {
                 </select>
                 <ChevronRight
                   size={12}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-white/20 pointer-events-none"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-[#A8967E] pointer-events-none"
                 />
               </div>
             </Field>
@@ -260,7 +261,7 @@ export default function EnquiryFormFull() {
                 </select>
                 <ChevronRight
                   size={12}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-white/20 pointer-events-none"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-[#A8967E] pointer-events-none"
                 />
               </div>
             </Field>
@@ -270,7 +271,7 @@ export default function EnquiryFormFull() {
                 <Calendar
                   size={12}
                   strokeWidth={1.5}
-                  className="text-white/20"
+                  className="text-[#A8967E]"
                 />
               }
             >
@@ -303,7 +304,7 @@ export default function EnquiryFormFull() {
                 </select>
                 <ChevronRight
                   size={12}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-white/20 pointer-events-none"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-[#A8967E] pointer-events-none"
                 />
               </div>
             </Field>
@@ -333,7 +334,7 @@ export default function EnquiryFormFull() {
                 </select>
                 <ChevronRight
                   size={12}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-white/20 pointer-events-none"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-[#A8967E] pointer-events-none"
                 />
               </div>
             </Field>
@@ -352,7 +353,7 @@ export default function EnquiryFormFull() {
                 </select>
                 <ChevronRight
                   size={12}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-white/20 pointer-events-none"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-[#A8967E] pointer-events-none"
                 />
               </div>
             </Field>
@@ -372,7 +373,7 @@ export default function EnquiryFormFull() {
                 </select>
                 <ChevronRight
                   size={12}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-white/20 pointer-events-none"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-[#A8967E] pointer-events-none"
                 />
               </div>
             </Field>
@@ -385,11 +386,11 @@ export default function EnquiryFormFull() {
                 <div
                   className={`h-0.5 rounded-full mb-1.5 transition-all duration-300 ${
                     form.budget && BUDGETS.indexOf(form.budget) >= i
-                      ? "bg-[#d4af6e]"
-                      : "bg-white/[0.06]"
+                      ? "bg-[#E8621A]"
+                      : "bg-[rgba(107,45,14,0.12)]"
                   }`}
                 />
-                <span className="text-[9px] text-white/20">{label}</span>
+                <span className="text-[9px] text-[#A8967E]">{label}</span>
               </div>
             ))}
           </div>
@@ -409,14 +410,14 @@ export default function EnquiryFormFull() {
             onChange={(e) => set("message", e.target.value)}
             className={`${inputCls} resize-none`}
           />
-          <p className="text-[11px] text-white/20 mt-2">
+          <p className="text-[11px] text-[#A8967E] mt-2">
             The more you share, the better we can tailor your trip.
           </p>
         </FormSection>
 
         {/* Error */}
         {status === "error" && (
-          <div className="flex items-start gap-3 text-red-400 border border-red-400/15 bg-red-400/5 px-4 py-3">
+          <div className="flex items-start gap-3 text-red-600 border border-red-300 bg-red-50 px-4 py-3 rounded-sm">
             <AlertCircle
               size={15}
               strokeWidth={1.5}
@@ -424,13 +425,13 @@ export default function EnquiryFormFull() {
             />
             <div>
               <p className="font-medium text-sm">Something went wrong.</p>
-              <p className="text-red-400/60 text-xs mt-0.5">
+              <p className="text-red-400 text-xs mt-0.5">
                 Please try{" "}
                 <a
                   href={waLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:text-red-300"
+                  className="underline hover:text-red-600"
                 >
                   WhatsApp instead
                 </a>
@@ -445,7 +446,7 @@ export default function EnquiryFormFull() {
           <button
             type="submit"
             disabled={status === "sending"}
-            className="flex items-center justify-center gap-2.5 bg-[#C8392B] hover:bg-[#A52E22] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-10 py-4 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[180px]"
+            className="flex items-center justify-center gap-2.5 bg-[#C8392B] hover:bg-[#A52E22] text-white text-[11px] font-bold tracking-[0.2em] uppercase px-10 py-4 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[180px] rounded-sm"
           >
             {status === "sending" ? (
               <>
@@ -459,7 +460,7 @@ export default function EnquiryFormFull() {
               </>
             )}
           </button>
-          <p className="text-white/20 text-[11px] leading-relaxed">
+          <p className="text-[#A8967E] text-[11px] leading-relaxed">
             Free consultation · No booking fees
             <br />
             Reply within 4 hours on business days
@@ -470,8 +471,8 @@ export default function EnquiryFormFull() {
       {/* ── RIGHT SIDEBAR ── */}
       <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
         {/* Why TravelWell */}
-        <div className="border border-white/[0.06] p-5">
-          <p className="text-[10px] tracking-[0.2em] uppercase text-white/25 mb-5">
+        <div className="border border-[rgba(107,45,14,0.12)] bg-white rounded-sm p-5">
+          <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8967E] mb-5">
             Why TravelWell Delight
           </p>
           <div className="space-y-4">
@@ -493,16 +494,16 @@ export default function EnquiryFormFull() {
               },
             ].map(({ icon: Icon, title, sub }) => (
               <div key={title} className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded border border-[#d4af6e]/20 bg-[#d4af6e]/5 flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded border border-[#E8621A]/20 bg-[#E8621A]/5 flex items-center justify-center shrink-0">
                   <Icon
                     size={14}
                     strokeWidth={1.5}
-                    className="text-[#d4af6e]"
+                    className="text-[#E8621A]"
                   />
                 </div>
                 <div>
-                  <p className="text-white/70 text-sm font-medium">{title}</p>
-                  <p className="text-white/30 text-xs mt-0.5">{sub}</p>
+                  <p className="text-[#1C0A00] text-sm font-medium">{title}</p>
+                  <p className="text-[#A8967E] text-xs mt-0.5">{sub}</p>
                 </div>
               </div>
             ))}
@@ -510,31 +511,34 @@ export default function EnquiryFormFull() {
         </div>
 
         {/* FAQ accordion */}
-        <div className="border border-white/[0.06]">
-          <p className="text-[10px] tracking-[0.2em] uppercase text-white/25 px-5 pt-5 pb-4 border-b border-white/[0.05]">
+        <div className="border border-[rgba(107,45,14,0.12)] bg-white rounded-sm">
+          <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8967E] px-5 pt-5 pb-4 border-b border-[rgba(107,45,14,0.08)]">
             Common questions
           </p>
           {FAQS.map((faq, i) => (
-            <div key={i} className="border-b border-white/[0.04] last:border-0">
+            <div
+              key={i}
+              className="border-b border-[rgba(107,45,14,0.06)] last:border-0"
+            >
               <button
                 type="button"
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                className="w-full flex items-start justify-between gap-3 px-5 py-4 text-left hover:bg-white/[0.02] transition-colors group"
+                className="w-full flex items-start justify-between gap-3 px-5 py-4 text-left hover:bg-[#F5F0E8] transition-colors group"
               >
-                <span className="text-white/55 text-xs leading-relaxed group-hover:text-white/75 transition-colors">
+                <span className="text-[#6B5B45] text-xs leading-relaxed group-hover:text-[#1C0A00] transition-colors">
                   {faq.q}
                 </span>
                 <ChevronRight
                   size={12}
                   strokeWidth={1.5}
-                  className={`text-white/20 shrink-0 mt-0.5 transition-transform duration-200 ${
+                  className={`text-[#A8967E] shrink-0 mt-0.5 transition-transform duration-200 ${
                     openFaq === i ? "rotate-90" : ""
                   }`}
                 />
               </button>
               {openFaq === i && (
                 <div className="px-5 pb-4">
-                  <p className="text-white/35 text-xs leading-relaxed">
+                  <p className="text-[#6B5B45] text-xs leading-relaxed">
                     {faq.a}
                   </p>
                 </div>
@@ -550,10 +554,10 @@ export default function EnquiryFormFull() {
 /* ── Sub-components ── */
 
 const inputCls =
-  "w-full bg-[#111] border border-white/[0.08] text-white text-sm px-4 py-3 outline-none focus:border-[#d4af6e]/30 transition-colors placeholder-white/15 rounded-none";
+  "w-full bg-white border border-[rgba(107,45,14,0.15)] text-[#1C0A00] text-sm px-4 py-3 outline-none focus:border-[#E8621A] transition-colors placeholder-[#A8967E] rounded-sm";
 
 const selectCls =
-  "w-full bg-[#111] border border-white/[0.08] text-white text-sm px-4 py-3 outline-none focus:border-[#d4af6e]/30 transition-colors rounded-none appearance-none pr-8";
+  "w-full bg-white border border-[rgba(107,45,14,0.15)] text-[#1C0A00] text-sm px-4 py-3 outline-none focus:border-[#E8621A] transition-colors rounded-sm appearance-none pr-8";
 
 function FormSection({
   icon,
@@ -567,8 +571,8 @@ function FormSection({
   return (
     <section>
       <div className="flex items-center gap-2 mb-5">
-        <span className="text-white/25">{icon}</span>
-        <span className="text-[10px] tracking-[0.25em] uppercase text-white/25">
+        <span className="text-[#A8967E]">{icon}</span>
+        <span className="text-[10px] tracking-[0.25em] uppercase text-[#A8967E]">
           {title}
         </span>
       </div>
@@ -590,7 +594,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="flex items-center gap-1.5 text-[11px] text-white/30 mb-1.5">
+      <label className="flex items-center gap-1.5 text-[11px] text-[#6B5B45] font-medium mb-1.5">
         {icon}
         {label}
         {required && <span className="text-[#C8392B] ml-0.5">*</span>}
@@ -601,5 +605,5 @@ function Field({
 }
 
 function Divider() {
-  return <div className="h-px bg-white/[0.05]" />;
+  return <div className="h-px bg-[rgba(107,45,14,0.08)]" />;
 }
