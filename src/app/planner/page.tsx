@@ -225,21 +225,7 @@ export default function NotFound() {
             marginBottom: "0.5rem",
             ...fadeUp(0.08),
           }}
-        >
-          404
-        </div>
-
-        {/* Divider */}
-        <div
-          style={{
-            width: 60,
-            height: 3,
-            background: C.red,
-            margin: "0 auto 1.5rem",
-            borderRadius: 2,
-            ...fadeUp(0.14),
-          }}
-        />
+        ></div>
 
         {/* Headline */}
         <h1

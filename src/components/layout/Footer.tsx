@@ -4,7 +4,7 @@ import { Instagram, Facebook, Linkedin, Mail } from "lucide-react";
 const SOCIALS = [
   {
     icon: Instagram,
-    href: "https://instagram.com/travelwelldelight",
+    href: "https://www.instagram.com/travelwelldelightpvtltd/",
     label: "Instagram",
   },
   {

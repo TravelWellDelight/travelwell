@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   User,
   Mail,
@@ -95,6 +95,35 @@ export default function EnquiryFormFull() {
 
   const set = (key: string, value: string) =>
     setForm((prev) => ({ ...prev, [key]: value }));
+
+  useEffect(() => {
+    const nav = document.querySelector("header") as HTMLElement;
+    if (!nav) return;
+
+    nav.style.background = "rgba(253,246,237,0.97)";
+    nav.style.backdropFilter = "blur(8px)";
+    nav.style.borderBottom = "1px solid rgba(200,57,43,0.12)";
+
+    const links = nav.querySelectorAll("a, button") as NodeListOf<HTMLElement>;
+    links.forEach((el) => {
+      el.dataset.origColor = el.style.color;
+      el.style.color = "#1C0A00";
+
+      if (el.tagName === "BUTTON") {
+        el.dataset.origBorder = el.style.borderColor;
+        el.style.borderColor = "rgba(28,10,0,0.3)";
+      }
+    });
+
+    return () => {
+      nav.style.background = "";
+      nav.style.backdropFilter = "";
+      nav.style.borderBottom = "";
+      links.forEach((el) => {
+        el.style.color = el.dataset.origColor || "";
+      });
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
