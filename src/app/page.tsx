@@ -1,3 +1,4 @@
+import RevealSection from "@/components/ui/RevealSection";
 import HeroSection from "@/components/home/HeroSection";
 import SearchBar from "@/components/home/SearchBar";
 import OffersStrip from "@/components/home/OffersStrip";
@@ -17,14 +18,30 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <SearchBar />
-      <OffersStrip />
-      <FeaturedPackages packages={pkgs} />
-      <Marquee />
-      <StatsStrip />
-      <DestinationGrid destinations={dests} />
-      <WhyTravelWell />
-      <EnquiryBanner />
+      <RevealSection delay={100}>
+        <SearchBar />
+      </RevealSection>
+      <RevealSection delay={100}>
+        <OffersStrip />
+      </RevealSection>
+      <RevealSection delay={100}>
+        <FeaturedPackages packages={pkgs} />
+      </RevealSection>
+      <RevealSection delay={100}>
+        <Marquee />
+      </RevealSection>
+      <RevealSection delay={100}>
+        <StatsStrip />
+      </RevealSection>
+      <RevealSection delay={100}>
+        <DestinationGrid destinations={dests} />
+      </RevealSection>
+      <RevealSection delay={100}>
+        <WhyTravelWell />
+      </RevealSection>
+      <RevealSection delay={100}>
+        <EnquiryBanner />
+      </RevealSection>
     </>
   );
 }

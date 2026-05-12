@@ -62,3 +62,54 @@ body {
     font-family: "Playfair Display", Georgia, serif;
   }
 }
+/* ── Global button & nav link hover animations ── */
+
+/* All buttons */
+button,
+a[href] {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+button:hover,
+a[href]:hover {
+  transform: scale(1.04);
+}
+
+/* Nav links specifically — underline slide */
+nav a {
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* CTA / filled buttons — glow */
+a.bg-\[\#C8392B\]:hover,
+button.bg-\[\#C8392B\]:hover {
+  box-shadow: 0 4px 20px rgba(200, 57, 43, 0.35);
+  transform: scale(1.05);
+}
+
+/* Prevent scale on logo */
+header a:has(img) {
+  transform: none !important;
+}
+
+header a:has(img):hover {
+  transform: none !important;
+}

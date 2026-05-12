@@ -32,7 +32,7 @@ export default function DestinationGrid({ destinations }: Props) {
   const featured = destinations.slice(0, 5);
 
   return (
-    <section ref={ref} className="mt-16 w-full bg-[#f5f4f3] py-16">
+    <section ref={ref} className="mt-0 w-full bg-[#f5f4f3] py-16">
       {/* FULL WIDTH CONTAINER */}
       <div className="w-full px-6 md:px-16 lg:px-24 xl:px-32">
         {/* HEADER */}

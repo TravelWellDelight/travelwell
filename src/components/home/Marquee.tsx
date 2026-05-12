@@ -13,7 +13,7 @@ export default function Marquee() {
 
   return (
     <div
-      className="overflow-hidden py-5 border-y mt-15"
+      className="overflow-hidden py-0 border-y mt-15"
       style={{ borderColor: "var(--bd)", background: "var(--bg-2)" }}
     >
       <div

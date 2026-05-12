@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 export function useScrollReveal(
   ref: React.RefObject<HTMLElement>,
-  threshold = 0.15,
+  threshold = 0.12,
 ): boolean {
   const [visible, setVisible] = useState(false);
 
@@ -14,10 +14,8 @@ export function useScrollReveal(
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect(); // fire once only
-        }
+        // toggle on AND off — repeats every time
+        setVisible(entry.isIntersecting);
       },
       { threshold },
     );
