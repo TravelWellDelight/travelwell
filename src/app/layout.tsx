@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/ui/PageTransition";
-
+import { Analytics } from "@vercel/analytics/next";
 import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
@@ -49,6 +49,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </AuthProvider>
+        <Analytics />
       </body>
     </html>
   );
