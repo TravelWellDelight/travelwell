@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { href: "/about", label: "About us" },
   { href: "/planner", label: "Planner" },
   { href: "/enquiry", label: "Contact" },
+  { href: "/blog", label: "Stories" },
 ];
 
 export default function Navbar() {
