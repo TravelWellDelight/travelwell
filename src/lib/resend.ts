@@ -88,6 +88,9 @@ export async function sendEnquiryNotification(data: {
   budget?: string;
   travelMonth?: string;
   duration?: string;
+  fromDate?: string;
+  toDate?: string;
+  serviceType?: string;
   groupSize?: {
     adults?: number;
     children?: number;
@@ -108,6 +111,9 @@ export async function sendEnquiryNotification(data: {
     duration,
     groupSize,
     message,
+    fromDate,
+    toDate,
+    serviceType,
   } = data;
 
   const subjectType =
@@ -182,16 +188,19 @@ export async function sendEnquiryNotification(data: {
                 <tr>
                   <td style="background:#FDFAF6;border:1px solid rgba(107,45,14,0.12);border-top:none;border-bottom:none;padding:20px 28px;">
                     <table width="100%" cellpadding="0" cellspacing="0">
-                      ${row("Name", name)}
-                      ${row("Email", `<a href="mailto:${email}" style="color:#E8621A;text-decoration:none;">${email}</a>`)}
-                      ${row("Phone", `<a href="tel:${phone}" style="color:#E8621A;text-decoration:none;">${phone}</a>`)}
-                      ${row("Trip type", tripType)}
-                      ${row("Destination", destination)}
-                      ${row("Travel month", travelMonth)}
-                      ${row("Duration", duration)}
-                      ${row("Group", groupStr)}
-                      ${row("Budget", budget)}
-                      ${row("Package", packageTitle)}
+                     ${row("Name", name)}
+${row("Email", `<a href="mailto:${email}" style="color:#E8621A;text-decoration:none;">${email}</a>`)}
+${row("Phone", `<a href="tel:${phone}" style="color:#E8621A;text-decoration:none;">${phone}</a>`)}
+${row("Destination", destination)}
+${row("Trip type", tripType)}
+${row("Service", serviceType)}
+${row("Travel from", fromDate)}
+${row("Travel to", toDate)}
+${row("Travel month", travelMonth)}
+${row("Duration", duration)}
+${row("Group", groupStr)}
+${row("Budget", budget)}
+${row("Package", packageTitle)}
                     </table>
 
                     ${

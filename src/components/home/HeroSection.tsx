@@ -35,6 +35,13 @@ const SLIDES = [
     headline: ["Crystal waters,", "Absolute silence"],
   },
 ];
+const SITE_TIPS = [
+  "Search a destination below → pick your dates → we'll find the perfect package.",
+  "Browse 23+ handcrafted packages across India and the world under Packages.",
+  "Not sure where to go? Visit Destinations for inspiration by region.",
+  "Need something custom? Hit Plan My Trip and our specialists design it for you.",
+  "Already have a package in mind? Click Book on any package to request a quote.",
+];
 
 export default function HeroSection() {
   const [cur, setCur] = useState(0);
@@ -47,6 +54,15 @@ export default function HeroSection() {
   }, []);
 
   const slide = SLIDES[cur];
+  // Add this state inside the component:
+  const [tipIndex, setTipIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTipIndex((i) => (i + 1) % SITE_TIPS.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative h-screen min-h-[620px] overflow-hidden">
@@ -114,13 +130,29 @@ export default function HeroSection() {
             {slide.headline[1]}
           </h1>
           {/* Sub */}
-          <p
-            className={`text-[14px] text-white/55 leading-relaxed max-w-md mb-8 transition-all duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-            style={{ transitionDelay: "300ms" }}
-          >
-            We craft tours in India and beyond that guarantee the discovery of a
-            new reality with TravelWell Delight.
-          </p>
+
+          <div className="mb-14">
+            <p
+              key={tipIndex}
+              className="text-white/70 text-sm leading-relaxed max-w-sm"
+              style={{ animation: "fadeSlideUp 0.5s ease forwards" }}
+            >
+              {SITE_TIPS[tipIndex]}
+            </p>
+            <div className="flex gap-1.5 mt-3">
+              {SITE_TIPS.map((_, i) => (
+                <div
+                  key={i}
+                  className="h-0.5 rounded-full transition-all duration-300"
+                  style={{
+                    width: i === tipIndex ? 20 : 6,
+                    background:
+                      i === tipIndex ? "#E8621A" : "rgba(255,255,255,0.25)",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
           {/* CTA row */}
           <div
             className={`flex items-center gap-4 transition-all duration-700 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}

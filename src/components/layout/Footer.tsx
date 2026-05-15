@@ -33,7 +33,7 @@ const COLUMNS = [
     title: "Plan",
     links: [
       ["Trip Planner", "/planner"],
-      ["Contact", "/contact"],
+      ["Contact", "/enquiry"],
       ["Blog", "/blog"],
     ],
   },

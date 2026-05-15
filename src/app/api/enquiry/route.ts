@@ -19,6 +19,9 @@ export async function POST(req: NextRequest) {
       tripType,
       budget,
       duration,
+      fromDate,
+      toDate,
+      serviceType,
     } = body;
 
     if (!name || !email || !phone || !message) {
@@ -43,6 +46,9 @@ export async function POST(req: NextRequest) {
       tripType: tripType || null,
       budget: budget || null,
       duration: duration || null,
+      fromDate: fromDate || null,
+      toDate: toDate || null,
+      serviceType: serviceType || null,
     });
 
     // Fire both emails in parallel — neither blocks the response
@@ -58,6 +64,9 @@ export async function POST(req: NextRequest) {
         budget,
         travelMonth,
         duration,
+        fromDate,
+        toDate,
+        serviceType,
         groupSize,
         message,
       }),

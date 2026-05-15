@@ -49,9 +49,9 @@ const POLAROIDS = [
 ];
 
 const STATS = [
-  { num: "8+", label: "Years" },
-  { num: "4,200+", label: "Travelers" },
-  { num: "87", label: "Destinations" },
+  { num: "5+", label: "Years" },
+  { num: "150+", label: "Travelers" },
+  { num: "23+", label: "Destinations" },
   { num: "100%", label: "Handcrafted" },
 ];
 

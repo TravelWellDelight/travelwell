@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   User,
   Mail,
@@ -13,27 +14,11 @@ import {
   Check,
   AlertCircle,
   ChevronRight,
-  MessageCircle,
   Clock,
   HeadphonesIcon,
   Sparkles,
+  Package,
 } from "lucide-react";
-
-const DESTINATIONS = [
-  "Bali, Indonesia",
-  "Maldives",
-  "Swiss Alps",
-  "Japan",
-  "Kerala, India",
-  "Rajasthan, India",
-  "Thailand",
-  "Paris, France",
-  "Santorini, Greece",
-  "Dubai, UAE",
-  "New Zealand",
-  "Morocco",
-  "Other / Not sure yet",
-];
 
 const BUDGETS = [
   "Under ₹30,000 per person",
@@ -53,6 +38,12 @@ const TRIP_TYPES = [
   "Beach & Relaxation",
   "Business + Leisure",
 ];
+const SERVICE_LABELS: Record<string, string> = {
+  package: "Complete Package",
+  flight: "Flight Only",
+  hotel: "Hotel Only",
+  "flight-hotel": "Flight + Hotel",
+};
 
 const FAQS = [
   {
@@ -90,6 +81,9 @@ export default function EnquiryFormFull() {
     children: "0",
     travelDate: "",
     duration: "",
+    fromDate: "",
+    toDate: "",
+    serviceType: "",
     message: "",
   });
 
@@ -141,6 +135,9 @@ export default function EnquiryFormFull() {
           budget: form.budget,
           groupSize: { adults: +form.adults, children: +form.children },
           travelDate: form.travelDate,
+          fromDate: form.fromDate || undefined,
+          toDate: form.toDate || undefined,
+          serviceType: form.serviceType || undefined,
           duration: form.duration,
           message: form.message,
         }),
@@ -151,7 +148,43 @@ export default function EnquiryFormFull() {
       setStatus("error");
     }
   };
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const dest = searchParams.get("destination") || "";
+    const date = searchParams.get("travelDate") || "";
+    const from = searchParams.get("from") || "";
+    const to = searchParams.get("to") || "";
+    const service = searchParams.get("service") || "";
+    if (dest) set("destination", dest);
+    if (date) set("travelDate", date);
 
+    if (from) {
+      set("fromDate", from);
+      // Extract month from dd/mm/yy → convert to yyyy-MM for the month input
+      const [, mm, yy] = from.split("/");
+
+      if (mm && yy) set("travelDate", `20${yy}-${mm}`);
+    }
+    if (to) set("toDate", to);
+    if (from && to) {
+      const [fdd, fmm, fyy] = from.split("/");
+      const [tdd, tmm, tyy] = to.split("/");
+      const fromD = new Date(`20${fyy}-${fmm}-${fdd}`);
+      const toD = new Date(`20${tyy}-${tmm}-${tdd}`);
+      const nights = Math.round(
+        (toD.getTime() - fromD.getTime()) / (1000 * 60 * 60 * 24),
+      );
+      if (nights > 0) {
+        if (nights <= 4) set("duration", "3–4 nights");
+        else if (nights <= 6) set("duration", "5–6 nights");
+        else if (nights <= 8) set("duration", "7–8 nights");
+        else if (nights <= 12) set("duration", "9–12 nights");
+        else set("duration", "13+ nights");
+      }
+    }
+    if (service) set("serviceType", service);
+  }, []);
+  // runs once on mount
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919999999999";
   const waLink = `https://wa.me/${waNumber}?text=Hi%2C%20I%27d%20like%20help%20planning%20a%20trip%20with%20TravelWell%20Delight`;
 
@@ -185,6 +218,43 @@ export default function EnquiryFormFull() {
       {/* ── LEFT: FORM ── */}
       <form onSubmit={handleSubmit} className="space-y-10">
         {/* Your details */}
+        {(form.fromDate || form.toDate || form.serviceType) && (
+          <div className="flex flex-wrap gap-2 p-4 bg-[#F5F0E8] border border-[rgba(107,45,14,0.12)] rounded-sm">
+            <p className="w-full text-[10px] tracking-[0.2em] uppercase text-[#A8967E] mb-1">
+              Trip details from your search
+            </p>
+            {form.fromDate && (
+              <span className="flex items-center gap-1.5 text-xs text-[#6B5B45] bg-white border border-[rgba(107,45,14,0.12)] px-3 py-1.5 rounded-sm">
+                <Calendar
+                  size={11}
+                  strokeWidth={1.5}
+                  className="text-[#C8392B]"
+                />
+                From: {form.fromDate}
+              </span>
+            )}
+            {form.toDate && (
+              <span className="flex items-center gap-1.5 text-xs text-[#6B5B45] bg-white border border-[rgba(107,45,14,0.12)] px-3 py-1.5 rounded-sm">
+                <Calendar
+                  size={11}
+                  strokeWidth={1.5}
+                  className="text-[#E8621A]"
+                />
+                To: {form.toDate}
+              </span>
+            )}
+            {form.serviceType && (
+              <span className="flex items-center gap-1.5 text-xs text-[#6B5B45] bg-white border border-[rgba(107,45,14,0.12)] px-3 py-1.5 rounded-sm">
+                <Package
+                  size={11}
+                  strokeWidth={1.5}
+                  className="text-[#C8392B]"
+                />
+                {SERVICE_LABELS[form.serviceType] ?? form.serviceType}
+              </span>
+            )}
+          </div>
+        )}
         <FormSection
           icon={<User size={12} strokeWidth={1.5} />}
           title="Your details"
@@ -254,25 +324,14 @@ export default function EnquiryFormFull() {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="Destination" required>
-              <div className="relative">
-                <select
-                  required
-                  value={form.destination}
-                  onChange={(e) => set("destination", e.target.value)}
-                  className={selectCls}
-                >
-                  <option value="">Select a destination</option>
-                  {DESTINATIONS.map((d) => (
-                    <option key={d} value={d}>
-                      {d}
-                    </option>
-                  ))}
-                </select>
-                <ChevronRight
-                  size={12}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rotate-90 text-[#A8967E] pointer-events-none"
-                />
-              </div>
+              <input
+                type="text"
+                required
+                placeholder="e.g. Kerala, Bali, Maldives..."
+                value={form.destination}
+                onChange={(e) => set("destination", e.target.value)}
+                className={inputCls}
+              />
             </Field>
             <Field label="Trip type">
               <div className="relative">

@@ -37,7 +37,8 @@ const categoryToSlug: Record<string, string> = {
 export default function PackageGrid({ packages }: { packages: Package[] }) {
   const [active, setActive] = useState("All");
   const ref = useRef<HTMLDivElement>(null);
-  const visible = useScrollReveal(ref);
+  // ── FIX: threshold 0 means trigger as soon as ANY pixel is visible ──
+  const visible = useScrollReveal(ref, 0);
 
   const filtered =
     active === "All"
